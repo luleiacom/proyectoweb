@@ -177,7 +177,7 @@ function projectMat(file) {
 const project1 = projectMat('./img1.jpg'); // Generador de paletas
 const project2 = projectMat('./img2.jpg'); // Landing de marca
 const project3 = projectMat('./img3.jpg'); // Configurador 3D
-const project4 = projectMat('./img4.jpg'); // Laboratorio de partículas
+const project4 = projectMat('./img4.jpg'); // Prototyping
 
 const top = new THREE.MeshStandardMaterial({ color: 0x14102a, roughness: 0.4 });
 const bottom = new THREE.MeshStandardMaterial({ color: 0x14102a, roughness: 0.4 });
