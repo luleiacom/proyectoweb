@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build",
+    "build": "chmod +x node_modules/.bin/vite && vite build",
     "preview": "vite preview"
   },
   "keywords": [],
