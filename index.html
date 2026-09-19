@@ -126,7 +126,7 @@
       }
 
       .site-nav.is-scrolled {
-        background: rgba(5, 5, 5, 0.6);
+        background: rgba(5, 5, 5, 0.75);
         backdrop-filter: blur(12px);
         border-bottom-color: rgba(255, 255, 255, 0.08);
       }
@@ -204,7 +204,7 @@
         line-height: 1.6;
       }
 
-      /* ---------- Stack técnico (código de barras) ---------- */
+      /* ---------- Stack técnico ---------- */
       .stack {
         margin-top: 2.5rem;
         max-width: 100%;
@@ -239,7 +239,7 @@
       }
 
       .project-card {
-        background: rgba(10, 10, 10, 0.92);
+        background: rgba(10, 10, 10, 0.95);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.12);
         padding: 2.5rem;
@@ -309,7 +309,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: rgba(5, 5, 5, 0.85);
+        background: rgba(5, 5, 5, 0.9);
         backdrop-filter: blur(8px);
         padding: 3rem 2rem;
         border-radius: 16px;
@@ -344,7 +344,7 @@
         gap: 1rem;
         padding: 2rem 5vw;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(5, 5, 5, 0.9);
+        background: rgba(5, 5, 5, 0.95);
         color: #8a8a8a;
         font-size: 0.85rem;
       }
@@ -366,21 +366,34 @@
 
       /* ---------- Mobile ---------- */
       @media (max-width: 768px) {
+        /* Hacemos que el canvas 3D ocupe solo la parte superior en celulares */
+        #webgl-container {
+          height: 45vh;
+          top: 0;
+          opacity: 0.75; /* Sutil de fondo arriba */
+        }
+
+        .scroll-container {
+          padding-top: 38vh; /* Empuja el contenido hacia abajo para que empiece debajo del cubo */
+        }
+
         section {
           height: auto;
+          min-height: 85vh;
           align-items: center;
-          padding: 12vh 5vw;
+          padding: 4vh 5vw;
         }
 
         .hero-section {
           justify-content: center;
           text-align: center;
+          min-height: 60vh;
         }
 
         .hero-content {
           width: 100%;
           max-width: 420px;
-          background: rgba(5, 5, 5, 0.9);
+          background: rgba(5, 5, 5, 0.92);
         }
 
         .stack {
@@ -402,12 +415,13 @@
           width: 100%;
           max-width: 420px;
           padding: 1.75rem;
-          background: rgba(10, 10, 10, 0.95);
+          background: rgba(10, 10, 10, 0.98); /* Fondo completamente opaco para lectura perfecta */
+          box-shadow: 0 20px 40px rgba(0,0,0,0.8);
         }
 
         .contact-section {
           width: 90%;
-          margin: 0 auto;
+          margin: 2rem auto;
         }
 
         .site-footer {
