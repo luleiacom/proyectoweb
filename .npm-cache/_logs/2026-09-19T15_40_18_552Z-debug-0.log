@@ -1,0 +1,102 @@
+0 verbose cli D:\Proyectodefinitivo\node.exe D:\Proyectodefinitivo\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.19.1
+2 info using node@v26.8.2
+3 silly config load:file:D:\Proyectodefinitivo\node_modules\npm\npmrc
+4 silly config load:file:D:\proyectoweb\.npmrc
+5 silly config load:file:C:\Users\belen\.npmrc
+6 silly config load:file:D:\proyectoweb\.npm-prefix\etc\npmrc
+7 verbose title npm install lenis
+8 verbose argv "install" "lenis"
+9 verbose logfile logs-max:10 dir:D:\proyectoweb\.npm-cache\_logs\2026-09-19T15_40_18_552Z-
+10 verbose logfile D:\proyectoweb\.npm-cache\_logs\2026-09-19T15_40_18_552Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:2248146944 maxSize:562036736 maxEntrySize:281018368
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly fetch manifest lenis@*
+16 silly packumentCache full:https://registry.npmjs.org/lenis cache-miss
+17 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+18 http fetch GET 200 https://registry.npmjs.org/lenis 461ms (cache miss)
+19 silly packumentCache full:https://registry.npmjs.org/lenis set size:undefined disposed:false
+20 silly fetch manifest @nuxt/kit@>=3.0.0
+21 silly packumentCache full:https://registry.npmjs.org/@nuxt%2fkit cache-miss
+22 http fetch GET 200 https://registry.npmjs.org/@nuxt%2fkit 686ms (cache miss)
+23 silly packumentCache full:https://registry.npmjs.org/@nuxt%2fkit set size:undefined disposed:false
+24 silly fetch manifest react@>=17.0.0
+25 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+26 http fetch GET 200 https://registry.npmjs.org/react 686ms (cache miss)
+27 silly packumentCache full:https://registry.npmjs.org/react set size:undefined disposed:false
+28 silly fetch manifest vue@>=3.0.0
+29 silly packumentCache full:https://registry.npmjs.org/vue cache-miss
+30 http fetch GET 200 https://registry.npmjs.org/vue 162ms (cache miss)
+31 silly packumentCache full:https://registry.npmjs.org/vue set size:undefined disposed:false
+32 silly fetch manifest typescript@*
+33 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+34 http fetch GET 200 https://registry.npmjs.org/typescript 584ms (cache miss)
+35 silly packumentCache full:https://registry.npmjs.org/typescript set size:undefined disposed:false
+36 silly placeDep ROOT lenis@1.3.26 OK for: proyectoweb@1.0.0 want: *
+37 silly reify moves {}
+38 silly audit bulk request {
+38 silly audit   '@dimforge/rapier3d-compat': [ '0.12.0' ],
+38 silly audit   '@oxc-project/types': [ '0.150.0' ],
+38 silly audit   '@rolldown/binding-android-arm-eabi': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-android-arm64': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-darwin-arm64': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-darwin-x64': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-freebsd-x64': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-arm-gnueabihf': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-arm64-gnu': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-arm64-musl': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-ppc64-gnu': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-s390x-gnu': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-x64-gnu': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-linux-x64-musl': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-openharmony-arm64': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-win32-arm64-msvc': [ '1.2.9' ],
+38 silly audit   '@rolldown/binding-win32-x64-msvc': [ '1.2.9' ],
+38 silly audit   '@rolldown/pluginutils': [ '1.0.1' ],
+38 silly audit   '@tweenjs/tween.js': [ '23.1.3' ],
+38 silly audit   '@types/stats.js': [ '0.17.4' ],
+38 silly audit   '@types/three': [ '0.186.0' ],
+38 silly audit   '@types/webxr': [ '0.5.24' ],
+38 silly audit   'detect-libc': [ '2.1.2' ],
+38 silly audit   fdir: [ '6.5.0' ],
+38 silly audit   fflate: [ '0.8.3' ],
+38 silly audit   fsevents: [ '2.3.3' ],
+38 silly audit   gsap: [ '3.15.0' ],
+38 silly audit   lightningcss: [ '1.33.0' ],
+38 silly audit   'lightningcss-android-arm64': [ '1.33.0' ],
+38 silly audit   'lightningcss-darwin-arm64': [ '1.33.0' ],
+38 silly audit   'lightningcss-darwin-x64': [ '1.33.0' ],
+38 silly audit   'lightningcss-freebsd-x64': [ '1.33.0' ],
+38 silly audit   'lightningcss-linux-arm-gnueabihf': [ '1.33.0' ],
+38 silly audit   'lightningcss-linux-arm64-gnu': [ '1.33.0' ],
+38 silly audit   'lightningcss-linux-arm64-musl': [ '1.33.0' ],
+38 silly audit   'lightningcss-linux-x64-gnu': [ '1.33.0' ],
+38 silly audit   'lightningcss-linux-x64-musl': [ '1.33.0' ],
+38 silly audit   'lightningcss-win32-arm64-msvc': [ '1.33.0' ],
+38 silly audit   'lightningcss-win32-x64-msvc': [ '1.33.0' ],
+38 silly audit   meshoptimizer: [ '1.1.1' ],
+38 silly audit   nanoid: [ '3.3.19' ],
+38 silly audit   picocolors: [ '1.1.1' ],
+38 silly audit   picomatch: [ '4.0.7' ],
+38 silly audit   postcss: [ '8.5.28' ],
+38 silly audit   rolldown: [ '1.2.9' ],
+38 silly audit   'source-map-js': [ '1.2.1' ],
+38 silly audit   three: [ '0.186.0' ],
+38 silly audit   tinyglobby: [ '0.2.17' ],
+38 silly audit   vite: [ '8.3.0' ],
+38 silly audit   lenis: [ '1.3.26' ]
+38 silly audit }
+39 http cache lenis@https://registry.npmjs.org/lenis/-/lenis-1.3.26.tgz 0ms (cache hit)
+40 silly tarball no local data for lenis@https://registry.npmjs.org/lenis/-/lenis-1.3.26.tgz. Extracting by manifest.
+41 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 251ms
+42 silly audit report {}
+43 http fetch GET 200 https://registry.npmjs.org/lenis/-/lenis-1.3.26.tgz 436ms (cache miss)
+44 silly ADD node_modules/lenis
+45 verbose cwd D:\proyectoweb
+46 verbose os Windows_NT 10.0.19045
+47 verbose node v26.8.2
+48 verbose npm  v11.19.1
+49 verbose exit 0
+50 info ok

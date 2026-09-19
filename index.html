@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nébula | Developer &amp; Designer</title>
+    <meta name="description" content="Nébula: portfolio de desarrollo y diseño web con experiencias 3D interactivas." />
+    <meta name="theme-color" content="#050505" />
+
+    <!-- Vista previa al compartir el link (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nébula | Developer &amp; Designer" />
+    <meta property="og:description" content="Portfolio de desarrollo y diseño web con experiencias 3D interactivas." />
+    <meta name="twitter:card" content="summary" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050505'/%3E%3Ctext x='16' y='23' font-size='20' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+    background: radial-gradient(ellipse at 50% 0%, #0f0f0f 0%, #050505 60%);
+}
+
+      
+      body {
+        background-color: #050505;
+        color: #f0f0f0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow-x: hidden;
+      }
+
+      :focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 4px;
+      }
+
+      /* ---------- Pantalla de carga ---------- */
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: #050505;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+      }
+
+      .loader-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        color: #fff;
+        animation: loader-pulse 1.6s ease-in-out infinite;
+      }
+
+      .loader-bar {
+        width: 120px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+      }
+
+      #loader-progress {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      @keyframes loader-pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .loader-name {
+          animation: none;
+        }
+      }
+
+      /* ---------- WebGL ---------- */
+      #webgl-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        pointer-events: auto;
+      }
+
+      .scroll-container {
+        position: relative;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .hero-content,
+      .project-card,
+      .contact-section,
+      .site-footer {
+        pointer-events: auto;
+      }
+
+      /* ---------- Navegación fija ---------- */
+      .site-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 5vw;
+        border-bottom: 1px solid transparent;
+        transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      .site-nav.is-scrolled {
+        background: rgba(5, 5, 5, 0.6);
+        backdrop-filter: blur(12px);
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .brand {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .site-nav nav {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .site-nav nav a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding-bottom: 4px;
+        border-bottom: 1px solid transparent;
+        transition: color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .site-nav nav a:hover,
+      .site-nav nav a.is-active {
+        color: #fff;
+      }
+
+      .site-nav nav a.is-active {
+        border-bottom-color: #fff;
+      }
+
+      /* ---------- Secciones ---------- */
+      section {
+        height: 100vh;
+        height: 100svh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        padding: 0 5vw;
+      }
+
+      .hero-section {
+        justify-content: flex-start;
+      }
+
+      .hero-content {
+        max-width: min(600px, 48vw);
+      }
+
+      .tag {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        color: #888;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .gradient-title .char {
+        color: #ffffff;
+        -webkit-text-fill-color: #ffffff;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        color: #aaa;
+        line-height: 1.6;
+      }
+
+      /* ---------- Stack técnico (código de barras) ---------- */
+      .stack {
+        margin-top: 2.5rem;
+        max-width: 100%;
+      }
+
+      .barcode svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        color: #f0f0f0;
+        opacity: 0.85;
+      }
+
+      .stack-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-top: 0.6rem;
+        font-size: 0.75rem;
+        color: #888;
+        letter-spacing: 0.08em;
+      }
+
+      /* ---------- Proyectos ---------- */
+      .project-section {
+        justify-content: flex-end;
+      }
+
+      .project-section.is-left {
+        justify-content: flex-start;
+      }
+
+      .project-card {
+        background: rgba(20, 20, 20, 0.75);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2.5rem;
+        border-radius: 12px;
+        max-width: min(400px, 40vw);
+      }
+
+      .card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .card-meta {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      /* Link a un proyecto terminado: agregá debajo de .chips
+         <a class="card-link" href="URL" target="_blank" rel="noopener">Ver proyecto</a> */
+      .card-link {
+        display: inline-block;
+        margin-top: 1.25rem;
+        color: #fff;
+        font-size: 0.9rem;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 2px;
+        transition: border-color 0.3s ease;
+      }
+
+      .card-link:hover {
+        border-bottom-color: #fff;
+      }
+
+      .project-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      .project-card p {
+        color: #999;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .chips {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+      }
+
+      .chips li {
+        font-size: 0.75rem;
+        color: #bbb;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+      }
+
+      /* ---------- Contacto ---------- */
+      .contact-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-link {
+        margin-top: 2rem;
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: #fff;
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .contact-link:hover {
+        transform: scale(1.05);
+        background: #e0e0e0;
+      }
+
+      /* ---------- Footer ---------- */
+      .site-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 2rem 5vw;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: transparent;
+        color: #8a8a8a;
+        font-size: 0.85rem;
+      }
+
+      .site-footer nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .site-footer a {
+        color: #aaa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .site-footer a:hover {
+        color: #fff;
+      }
+
+      /* ---------- Mobile ---------- */
+      /* Misma condición que isNarrow() en main.js */
+      @media (max-width: 900px), (orientation: portrait) {
+        .site-nav nav {
+          gap: 1.25rem;
+        }
+
+        section {
+          align-items: flex-end;
+          padding-bottom: 12vh;
+        }
+
+        .hero-content {
+          width: 100%;
+          max-width: 600px;
+        }
+
+        .project-section,
+        .project-section.is-left {
+          justify-content: center;
+        }
+
+        .project-card {
+          width: 100%;
+          max-width: 420px;
+          padding: 1.75rem;
+        }
+
+        .contact-section {
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 0;
+        }
+
+        .site-footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .site-nav {
+          padding: 1rem 5vw;
+        }
+
+        .brand {
+          font-size: 0.9rem;
+        }
+
+        .site-nav nav {
+          gap: 1rem;
+        }
+
+        .site-nav nav a {
+          font-size: 0.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .contact-link {
+          padding: 0.9rem 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" role="status" aria-live="polite">
+      <span class="loader-name">Nébula</span>
+      <span class="loader-bar"><span id="loader-progress"></span></span>
+    </div>
+    <div id="webgl-container"></div>
+
+    <header class="site-nav" id="site-nav">
+      <a class="brand" href="#inicio">Nébula</a>
+      <nav aria-label="Principal">
+        <a href="#inicio" data-section="inicio">Inicio</a>
+        <a href="#proyectos" data-section="proyectos">Proyectos</a>
+        <a href="#contacto" data-section="contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <div class="scroll-container">
+      <section class="hero-section" id="inicio">
+        <div class="hero-content">
+          <span class="tag">NÉBULA / 2026</span>
+          <h1 class="gradient-title">DEVELOPER &amp; DESIGNER</h1>
+          <p class="hero-subtitle">Desplázate hacia abajo para explorar la colección de proyectos interactivos.</p>
+
+          <div class="stack" aria-label="Stack técnico: Three.js, GSAP, Lenis y Vite">
+            <div class="barcode" id="barcode" aria-hidden="true"></div>
+            <ul class="stack-list">
+              <li>Three.js</li>
+              <li>GSAP</li>
+              <li>Lenis</li>
+              <li>Vite</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div id="proyectos">
+        <section class="project-section">
+          <div class="project-card">
+            <div class="card-head">
+              <span class="card-meta">Proyecto 1 de 4</span>
+            </div>
+            <h2>Generador de paletas</h2>
+            <p>Paletas armónicas con cálculo de contraste de accesibilidad y exportación de variables CSS listas para usar.</p>
+            <ul class="chips">
+              <li>Teoría del color</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="project-section is-left">
+          <div class="project-card">
+            <div class="card-head">
+              <span class="card-meta">Proyecto 2 de 4</span>
+            </div>
+            <h2>Landing de marca</h2>
+            <p>Identidad completa de una marca inventada y su página, con animaciones de scroll y diseño responsive.</p>
+            <ul class="chips">
+              <li>Branding</li>
+              <li>GSAP</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="project-section">
+          <div class="project-card">
+            <div class="card-head">
+              <span class="card-meta">Proyecto 3 de 4</span>
+            </div>
+            <h2>Configurador 3D</h2>
+            <p>Visor 3D de un producto donde se cambian colores y materiales en tiempo real.</p>
+            <ul class="chips">
+              <li>Three.js</li>
+              <li>Interfaz</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="project-section is-left">
+          <div class="project-card">
+            <div class="card-head">
+              <span class="card-meta">Proyecto 4 de 4</span>
+            </div>
+            <h2>Laboratorio de partículas</h2>
+            <p>Arte generativo con partículas y shaders, con controles para modificar los parámetros en vivo.</p>
+            <ul class="chips">
+              <li>WebGL</li>
+              <li>Shaders</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <section class="contact-section" id="contacto">
+        <h2 class="gradient-title">¿Hacemos algo increíble?</h2>
+        <a href="mailto:tu-correo@example.com" class="contact-link">Ponte en contacto</a>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 Nébula</span>
+        <nav aria-label="Redes">
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </footer>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
