@@ -177,6 +177,11 @@
 
       .hero-content {
         max-width: min(600px, 48vw);
+        background: rgba(5, 5, 5, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
       .tag {
@@ -234,9 +239,9 @@
       }
 
       .project-card {
-        background: rgba(20, 20, 20, 0.75);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(10, 10, 10, 0.92);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         padding: 2.5rem;
         border-radius: 12px;
         max-width: min(400px, 40vw);
@@ -304,6 +309,13 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        background: rgba(5, 5, 5, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        margin: 0 auto;
+        max-width: 600px;
       }
 
       .contact-link {
@@ -332,7 +344,7 @@
         gap: 1rem;
         padding: 2rem 5vw;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        background: transparent;
+        background: rgba(5, 5, 5, 0.9);
         color: #8a8a8a;
         font-size: 0.85rem;
       }
@@ -354,18 +366,10 @@
 
       /* ---------- Mobile ---------- */
       @media (max-width: 768px) {
-        #webgl-container {
-          display: none; /* Oculta el cubo en celulares para priorizar la lectura limpia */
-        }
-        
-        .scroll-container {
-          pointer-events: auto;
-        }
-
         section {
           height: auto;
           align-items: center;
-          padding: 10vh 5vw;
+          padding: 12vh 5vw;
         }
 
         .hero-section {
@@ -375,7 +379,8 @@
 
         .hero-content {
           width: 100%;
-          max-width: 600px;
+          max-width: 420px;
+          background: rgba(5, 5, 5, 0.9);
         }
 
         .stack {
@@ -397,12 +402,12 @@
           width: 100%;
           max-width: 420px;
           padding: 1.75rem;
+          background: rgba(10, 10, 10, 0.95);
         }
 
         .contact-section {
-          align-items: center;
-          justify-content: center;
-          padding-bottom: 5vh;
+          width: 90%;
+          margin: 0 auto;
         }
 
         .site-footer {
